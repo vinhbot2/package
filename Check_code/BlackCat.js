@@ -1,5 +1,5 @@
 const { BlackCat, AddRoles } = require("../BlackCat");
-const client = new BlackCat(process.env.token || "MTAwMzY4MDYzMTI3MzgyNDMyNg.G6lyHL.B-S2MnZaVyE-eMb6A_nlrOwrh5bsgESwstRAAc", {
+const client = new BlackCat(process.env.token || "", {
   Reply: true // có tag tin nhắn hay là không || true / false
 });
 
