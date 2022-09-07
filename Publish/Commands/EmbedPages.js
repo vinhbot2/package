@@ -1,5 +1,5 @@
 'use strict'; 
-const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, ComponentType } = require("./MessageOptions");
+const { ActionRowBuilder, ButtonBuilder, ButtonStyle, ComponentType } = require("./MessageOptions");
 module.exports = async function EmbedPages(message, embeds, style = {}) {
     style.but1 ||= "999292743719321630"; // Đầu tiên
     style.but2 ||= "999292810391998515"; // Trước
