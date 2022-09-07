@@ -1,5 +1,5 @@
 'use strict'; 
-const { findUser, getInventory, saveUser, updateInventory } = require("../Functions/functionsEconomyOptions");
+const { findUser, getInventory } = require("../Functions/functionsEconomyOptions");
 class Blackcat_Money {
   async addItem(Cai_Dat) {
     if (!Cai_Dat.inventory) return { error: true, type: "No-Inventory" };

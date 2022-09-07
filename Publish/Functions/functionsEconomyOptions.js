@@ -1,13 +1,12 @@
 /*----------------------------
-# Economy
+# EconomyOptions
 ----------------------------*/
-'use strict'; 
 const event = new (require("events").EventEmitter)();
 const hang_ton_kho = require("../Schema/inventory");
 const Tien_te = require("../Schema/currency");
-const databases = require("mongoose");
 let workCooldown = 0; let maxWallet;
 let maxBank; let wallet; let bank;
+
 async function info(ID_may_chu, ID_thanh_vien) {
   let Du_lieu = await findUser({ }, ID_may_chu, ID_thanh_vien, arguments.callee.toString().substring(15, arguments.callee.toString().indexOf("(")));
   let Gio_cuoi_cung = true;
@@ -702,6 +701,7 @@ function sleep(Mili_giay) {
     setTimeout(Giai_quyet, Mili_giay);
   });
 };
+
 module.exports = {
   setDefaultWalletAmount, gamble, withdraw, deposite, balance, leaderboard,
   globalLeaderboard, work, monthly, yearly, weekly, quaterly, hafly, daily,

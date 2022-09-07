@@ -1,6 +1,5 @@
 'use strict'; 
 const Cap_bac = require("../Schema/levels.js");
-
 class ranking {
   static async fetchLeaderboard(ID_may_chu, Dat_gioi_han) {
     if (!ID_may_chu) throw new TypeError("Id guild không được cung cấp.");
