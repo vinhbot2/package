@@ -8,7 +8,6 @@ client.on("ready", () => {
   console.log(`${client.user.username}`.red + ` Sẵn sàng hoạt động`.blue);
 });
 //// 
-client.setMongoURL("mongodb+srv://nguyenvinh:blackcat2k3@cluster0.bgyio.mongodb.net/?retryWrites=true&w=majority");
 client.on("messageCreate", async(message) => {
   const { messageAPI } = require("./Handlers/commands");
   messageAPI(client, message, { prefix: "!" });
