@@ -3,8 +3,11 @@
 # The source code is used exclusively by Nguyen Vinh
 --------------------------------------------------*/
 'use strict'; 
-const { ModalBuilder: Xay_dung_Modal, EmbedBuilder: Xay_dung_embeds, ButtonBuilder: Xay_dung_Button, ActionRowBuilder: Xay_dung_ActionRow, SelectMenuBuilder: Xay_dung_SelectMenu } = require("../Functions/functionsMessageOptions2");
-const { toSnakeCase, ButtonStyle, resolveColor, ComponentType, normalizeArray, isJSONEncodable, MessageButtonStyles, resolvePartialEmoji, MessageComponentTypes } = require("../Functions/functionsMessageOptions");
+const { ModalBuilder: Xay_dung_Modal, EmbedBuilder: Xay_dung_embeds, ButtonBuilder: Xay_dung_Button, ActionRowBuilder: Xay_dung_ActionRow, SelectMenuBuilder: Xay_dung_SelectMenu, MessageComponentTypes, MessageButtonStyles } = require("../Functions/functionsMessageOptions2");
+const { toSnakeCase, ButtonStyle, resolveColor, ComponentType, normalizeArray, isJSONEncodable, resolvePartialEmoji } = require("../Functions/functionsMessageOptions");
+/*-------------------------
+# 
+--------------------------*/
 class EmbedBuilder extends Xay_dung_embeds {
   constructor(Du_lieu) {
     super(toSnakeCase(Du_lieu));
@@ -19,7 +22,9 @@ class EmbedBuilder extends Xay_dung_embeds {
     return new this(Muc_khac);
   }
 }
-
+/*-------------------------
+#
+--------------------------*/
 class ButtonBuilder extends Xay_dung_Button {
   constructor({ emoji, ...Du_lieu } = {}) {
     super(toSnakeCase({ ...Du_lieu, emoji: emoji && typeof emoji === 'string' ? resolvePartialEmoji(emoji) : emoji }));
@@ -37,7 +42,9 @@ class ButtonBuilder extends Xay_dung_Button {
     return new this(Muc_khac);
   }
 }
-
+/*-------------------------
+#
+--------------------------*/
 class ActionRowBuilder extends Xay_dung_ActionRow {
   constructor({ components, ...Du_lieu } = {}) {
     super({...toSnakeCase(Du_lieu), components: components?.map(c => (c instanceof ComponentBuilder ? c : createComponentBuilder(c)))});
@@ -49,7 +56,9 @@ class ActionRowBuilder extends Xay_dung_ActionRow {
     return new this(Muc_khac);
   }
 }
-
+/*-------------------------
+#
+--------------------------*/
 class SelectMenuBuilder extends Xay_dung_SelectMenu {
   constructor({ options, ...Du_lieu } = {}) {
     super( toSnakeCase({ ...Du_lieu, options: options?.map(({ emoji, ...option }) => ({ ...option, emoji: emoji && typeof emoji === 'string' ? resolvePartialEmoji(emoji) : emoji }))}));
@@ -74,7 +83,9 @@ class SelectMenuBuilder extends Xay_dung_SelectMenu {
     return new this(Muc_khac);
   }
 }
-
+/*-------------------------
+#
+--------------------------*/
 class ModalBuilder extends Xay_dung_Modal {
   constructor({ components, ...Du_lieu } = {}) {
     super({...toSnakeCase(Du_lieu), components: components?.map(c => (c instanceof ComponentBuilder ? c : toSnakeCase(c)))});
@@ -86,7 +97,9 @@ class ModalBuilder extends Xay_dung_Modal {
     return new this(Muc_khac);
   }
 }
-
+/*-------------------------
+# BaseMessageComponent, button, row
+--------------------------*/
 class BaseMessageComponent {
   constructor(data) {
     this.type = 'type' in data ? BaseMessageComponent.resolveType(data.type) : null;
@@ -96,7 +109,7 @@ class BaseMessageComponent {
     let type = data.type;
     if (typeof type === 'string') type = MessageComponentTypes[type];
     switch (type) {
-      case MessageComponentTypes.ACTION_ROW: {
+      case MessageComponentTypes.ACTIONROW: {
         component = data instanceof ButtonActionRow ? data : new ButtonActionRow(data, client);
         break;
       }
@@ -189,7 +202,7 @@ class MessageButton extends BaseMessageComponent {
 }
 class ButtonActionRow extends BaseMessageComponent {
   constructor(data = {}, client = null) {
-    super({ type: 'ACTION_ROW' });
+    super({ type: 'ACTIONROW' });
     this.components = data.components?.map(c => BaseMessageComponent.create(c, client)) ?? [];
   }
   addComponents(...components) {
@@ -209,7 +222,9 @@ class ButtonActionRow extends BaseMessageComponent {
       components: this.components.map(c => c.toJSON()),
       type: MessageComponentTypes[this.type],
     };
-  }
-}
-    
+  };
+};
+/*-------------------------
+# Kết thúc
+--------------------------*/
 module.exports = { ButtonStyle, EmbedBuilder, ModalBuilder, ButtonBuilder, ComponentType, ButtonActionRow, ActionRowBuilder, SelectMenuBuilder, Embed: EmbedBuilder, Button: ButtonBuilder, ActionRow: ActionRowBuilder, SelectMenu: SelectMenuBuilder, MessageEmbed: EmbedBuilder, MessageButton: ButtonBuilder, MessageActionRow: ActionRowBuilder, MessageSelectMenu: SelectMenuBuilder };

@@ -6,8 +6,7 @@ const hang_ton_kho = require("../Schema/inventory");
 const Tien_te = require("../Schema/currency");
 let workCooldown = 0; let maxWallet;
 let maxBank; let wallet; let bank;
-
-async function info(ID_may_chu, ID_thanh_vien) {
+const info = async function(ID_may_chu, ID_thanh_vien) {
   let Du_lieu = await findUser({ }, ID_may_chu, ID_thanh_vien, arguments.callee.toString().substring(15, arguments.callee.toString().indexOf("(")));
   let Gio_cuoi_cung = true;
   let Cuoi_cung = true;
@@ -682,7 +681,7 @@ async function makeUser(Cai_dat, Nguoi_dung_2 = false, ID_thanh_vien, ID_may_chu
     Cai_dat.guild = { id: null };
   let user = ID_thanh_vien || Cai_dat.user.id;
   if (Nguoi_dung_2) user = Cai_dat.user2.id;
-  const newUser = new cs({ userID: user, guildID: ID_may_chu || Cai_dat.guild.id || null, wallet: wallet || 0, bank: bank || 0, bankSpace: maxBank || 0, streak: { hourly: 0, daily: 0, weekly: 0, monthly: 0, yearly: 0, hafly: 0, quaterly: 0 }});
+  const newUser = new Tien_te({ userID: user, guildID: ID_may_chu || Cai_dat.guild.id || null, wallet: wallet || 0, bank: bank || 0, bankSpace: maxBank || 0, streak: { hourly: 0, daily: 0, weekly: 0, monthly: 0, yearly: 0, hafly: 0, quaterly: 0 }});
   if (!newUser) throw new Error("Thiếu dữ liệu để tìm nạp từ DB. (Một chức năng trong Hệ thống tiền tệ được sử dụng và userID không được cung cấp.)");
   event.emit("userCreate", newUser);
   return newUser;

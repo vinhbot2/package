@@ -58,7 +58,7 @@ const toSnakeCase = function(obj) {
   if (Array.isArray(obj)) return obj.map(toSnakeCase);
   return Object.fromEntries(Object.entries(obj).map(([key, value]) => [snakeCase(key), toSnakeCase(value)]));
 };
-const createEnum = function(keys) {
+const createEnum = async function(keys) {
   const obj = {};
   for (const [index, key] of keys.entries()) {
     if (key === null) continue;
@@ -131,7 +131,7 @@ function parseEmoji(text) {
   return match && { animated: Boolean(match[1]), name: match[2], id: match[3] };
 };
 
-function validateRequiredButtonParameters(style, label, emoji, customId, url) {
+const validateRequiredButtonParameters = function(style, label, emoji, customId, url) {
   if (url && customId) {
     throw new RangeError("URL và id tùy chỉnh không được lẫn nhau");
   };
@@ -146,7 +146,7 @@ function validateRequiredButtonParameters(style, label, emoji, customId, url) {
     throw new RangeError("Các nút không liên kết không được có url");
   };
 };
-function resolveColor(color) {
+const resolveColor = function(color) {
   if (typeof color === 'string') {
     if (color === 'Random') return Math.floor(Math.random() * (0xffffff + 1));
     if (color === 'Default') return 0;
@@ -158,7 +158,7 @@ function resolveColor(color) {
   else if (Number.isNaN(color)) throw new TypeError("ColorConvert");
   return color;
 };
-function isJSONEncodable(maybeEncodable) {
+const isJSONEncodable = function(maybeEncodable) {
   return maybeEncodable !== null && typeof maybeEncodable === "object" && "toJSON" in maybeEncodable;
 };
 /*----------------------------

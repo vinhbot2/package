@@ -1,7 +1,7 @@
 ;(function() {
     'use strict';
     var slice = Array.prototype.slice, toString = Object.prototype.toString
-    function Bang_Ascii(Ten, options) {
+    var Bang_Ascii = function(Ten, options) {
       this.options = options || {}
       this.reset(Ten)
     }

@@ -1,4 +1,3 @@
-'use strict';
 const { ButtonBuilder, EmbedBuilder, ActionRowBuilder, SelectMenuBuilder } = require("../../Modules/MainEvents");
 const disableButtons = (components) => {
   for (let x = 0; x < components.length; x++) {

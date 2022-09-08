@@ -1,5 +1,5 @@
 'use strict';
-const snakeCase = require('../../../Publish/Functions/functionsMessageOptions');
+const { snakeCase } = require('../../../Publish/Functions/functionsMessageOptions');
 const toSnakeCase = function(obj) {
   if (typeof obj !== 'object' || !obj) return obj;
   if (obj instanceof Date) return obj;

@@ -89,7 +89,6 @@ class ranking {
     Nguoi_dung.cleanNextLevelXp = this.xpFor(Nguoi_dung.level + 1) - this.xpFor(Nguoi_dung.level);
     return Nguoi_dung;
   };
-
   static async subtractXp(ID_thanh_vien, ID_may_chu, xp) {
     if (!ID_thanh_vien) throw new TypeError("Một id người dùng không được cung cấp.");
     if (!ID_may_chu) throw new TypeError("Id guild không được cung cấp.");
@@ -114,23 +113,37 @@ class ranking {
     Nguoi_dung.save().catch(e => console.log(`Không thể trừ các cấp: ${e}`) );
     return Nguoi_dung;
   };
-
-  static async computeLeaderboard(Khach_hang, Bang_xep_hang, Tim_nap_nguoi_dung = false) {
-    if (!Khach_hang) throw new TypeError("Một khách hàng không được cung cấp.");
-    if (!Bang_xep_hang) throw new TypeError("Id bảng xếp hạng không được cung cấp.");
-    if (Bang_xep_hang.length < 1) return [];
-    const Mang_tinh_toan = [];
-    if (Tim_nap_nguoi_dung) {
-      for (const key of Bang_xep_hang) {
+  static async computeLeaderboard(client, leaderboard, fetchUsers = false) {
+    if (!client) throw new TypeError("Một client không được cung cấp.");
+    if (!leaderboard) throw new TypeError("Id bảng xếp hạng không được cung cấp.");
+    if (leaderboard.length < 1) return [];
+    const computedArray = [];
+    if (fetchUsers) {
+      for (const key of leaderboard) {
         const user = await client.users.fetch(key.userID) || { username: "Unknown", discriminator: "0000" };
-        Mang_tinh_toan.push({ guildID: key.guildID, userID: key.userID, xp: key.xp, level: key.level, position: (Bang_xep_hang.findIndex(i => i.guildID === key.guildID && i.userID === key.userID) + 1), username: user.username, discriminator: user.discriminator });
-      };
+        computedArray.push({
+          guildID: key.guildID,
+          userID: key.userID,
+          xp: key.xp,
+          level: key.level,
+          position: (leaderboard.findIndex(i => i.guildID === key.guildID && i.userID === key.userID) + 1),
+          username: user.username,
+          discriminator: user.discriminator
+        });
+      }
     } else {
-      Bang_xep_hang.map(key => Mang_tinh_toan.push({ guildID: key.guildID, userID: key.userID, xp: key.xp, level: key.level, position: (Bang_xep_hang.findIndex(i => i.guildID === key.guildID && i.userID === key.userID) + 1), username: Khach_hang.users.cache.get(key.userID) ? Khach_hang.users.cache.get(key.userID).username : "Unknown", discriminator: Khach_hang.users.cache.get(key.userID) ? Khach_hang.users.cache.get(key.userID).discriminator : "0000"}));
+      leaderboard.map(key => computedArray.push({
+        guildID: key.guildID,
+        userID: key.userID,
+        xp: key.xp,
+        level: key.level,
+        position: (leaderboard.findIndex(i => i.guildID === key.guildID && i.userID === key.userID) + 1),
+        username: client.users.cache.get(key.userID) ? client.users.cache.get(key.userID).username : "Unknown",
+        discriminator: client.users.cache.get(key.userID) ? client.users.cache.get(key.userID).discriminator : "0000"
+      }));
     };
-    return Mang_tinh_toan;
+    return computedArray;
   };
-  
   static xpFor (Muc_tieu_cap_do) {
     if (isNaN(Muc_tieu_cap_do) || isNaN(parseInt(Muc_tieu_cap_do, 10))) throw new TypeError("Mức mục tiêu phải là một số hợp lệ.");
     if (isNaN(Muc_tieu_cap_do)) Muc_tieu_cap_do = parseInt(Muc_tieu_cap_do, 10);

@@ -1,11 +1,11 @@
 'use strict'; 
 const { ActionRowBuilder, ButtonBuilder, ButtonStyle, ComponentType } = require("./MessageOptions");
 module.exports = async function EmbedPages(message, embeds, style = {}) {
-    style.but1 ||= "999292743719321630"; // Đầu tiên
-    style.but2 ||= "999292810391998515"; // Trước
-    style.but3 ||= "984569652640382996"; // Xóa bỏ 
-    style.but4 ||= "999292867342237746"; // Tiếp theo
-    style.but5 ||= "999292909155270686"; // Cuối Cùng
+    style.but1 ||= "⬅️"; // Đầu tiên
+    style.but2 ||= "↩️"; // Trước
+    style.but3 ||= "❌"; // Xóa bỏ 
+    style.but4 ||= "↪️"; // Tiếp theo
+    style.but5 ||= "➡️"; // Cuối Cùng
     style.butColor ||= ButtonStyle.Primary; // màu nút chuyển động
     style.butColor2 ||= ButtonStyle.Danger; // màu nút xoá bỏ
     let but1 = new ButtonBuilder().setStyle(style.butColor).setCustomId("Đầu_tiên").setEmoji(style.but1).setDisabled(false);
