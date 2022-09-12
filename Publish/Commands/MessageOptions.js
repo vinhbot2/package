@@ -3,8 +3,8 @@
 # The source code is used exclusively by Nguyen Vinh
 --------------------------------------------------*/
 'use strict'; 
-const { ModalBuilder: Xay_dung_Modal, EmbedBuilder: Xay_dung_embeds, ButtonBuilder: Xay_dung_Button, ActionRowBuilder: Xay_dung_ActionRow, SelectMenuBuilder: Xay_dung_SelectMenu, MessageComponentTypes, MessageButtonStyles } = require("../Functions/functionsMessageOptions2");
-const { toSnakeCase, ButtonStyle, resolveColor, ComponentType, normalizeArray, isJSONEncodable, resolvePartialEmoji } = require("../Functions/functionsMessageOptions");
+const { ModalBuilder: Xay_dung_Modal, EmbedBuilder: Xay_dung_embeds, ButtonBuilder: Xay_dung_Button, ActionRowBuilder: Xay_dung_ActionRow, SelectMenuBuilder: Xay_dung_SelectMenu,  } = require("../Functions/functionsMessageOptions2");
+const { toSnakeCase, ButtonStyle, resolveColor, ComponentType, normalizeArray, isJSONEncodable, resolvePartialEmoji, createEnum } = require("../Functions/functionsMessageOptions");
 /*-------------------------
 # 
 --------------------------*/
@@ -100,6 +100,8 @@ class ModalBuilder extends Xay_dung_Modal {
 /*-------------------------
 # BaseMessageComponent, button, row
 --------------------------*/
+const MessageButtonStyles = createEnum([null, 'PRIMARY', 'SECONDARY', 'SUCCESS', 'DANGER', 'LINK', 'Primary', 'Secondary', "Success", "Danger", "Link"]);
+const MessageComponentTypes = createEnum([null, 'ACTION_ROW', 'BUTTON', 'Actionrow', 'Button',]);
 class BaseMessageComponent {
   constructor(data) {
     this.type = 'type' in data ? BaseMessageComponent.resolveType(data.type) : null;
@@ -109,7 +111,7 @@ class BaseMessageComponent {
     let type = data.type;
     if (typeof type === 'string') type = MessageComponentTypes[type];
     switch (type) {
-      case MessageComponentTypes.ACTIONROW: {
+      case MessageComponentTypes.ACTION_ROW: {
         component = data instanceof ButtonActionRow ? data : new ButtonActionRow(data, client);
         break;
       }
@@ -194,7 +196,7 @@ class MessageButton extends BaseMessageComponent {
     const match = text.match(/<?(?:(a):)?(\w{2,32}):(\d{17,19})?>?/);
     return match && { animated: Boolean(match[1]), name: match[2], id: match[3] ?? null };
   }
-  static verifyString( data, error = Error, errorMessage = `Expected a string, got ${data} instead.`, allowEmpty = true) {
+  static verifyString( data, error = Error, errorMessage = `Mong đợi một chuỗi, thay vào đó, có ${data}.`, allowEmpty = true) {
     if (typeof data !== 'string') throw new error(errorMessage);
     if (!allowEmpty && data.length === 0) throw new error(errorMessage);
     return data;
@@ -202,7 +204,7 @@ class MessageButton extends BaseMessageComponent {
 }
 class ButtonActionRow extends BaseMessageComponent {
   constructor(data = {}, client = null) {
-    super({ type: 'ACTIONROW' });
+    super({ type: 'ACTION_ROW' });
     this.components = data.components?.map(c => BaseMessageComponent.create(c, client)) ?? [];
   }
   addComponents(...components) {

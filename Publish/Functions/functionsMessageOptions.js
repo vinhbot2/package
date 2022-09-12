@@ -249,7 +249,7 @@ var snakeCase = createCompounder(function(result, word, index) {
   return result + (index ? '_' : '') + word.toLowerCase();
 });
 module.exports = {
-  disableValidators, enableValidators, isValidationEnabled, createEnum, equal,
+  disableValidators, enableValidators, isValidationEnabled, createEnum, equal, resolvePartialEmoji,
   ButtonStyle, ComponentType, resolveColor, normalizeArray, toSnakeCase, parseEmoji, snakeCase,
-  createComponentBuilder, validateRequiredButtonParameters, isJSONEncodable, resolvePartialEmoji,
+  createComponentBuilder, validateRequiredButtonParameters, isJSONEncodable, 
 };

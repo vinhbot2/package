@@ -22,29 +22,25 @@ const { DjsVoice: { AudioPlayerStatus, joinVoiceChannel, createAudioResource, /*
 ```
 ```js
 // Look for new npm package updates on bot startup! The latest version will be displayed in the dashboard
-client.NewUpdate(true);
+NewUpdate(true);
 ```
-![Demo](https://raw.githubusercontent.com/VinhBot/BlackCat-Club/main/Preview/update.jpg)
-```js
-client.ThongtinBlC();
-```
-![Demo](https://raw.githubusercontent.com/VinhBot/BlackCat-Club/main/Preview/ascii.jpg)
+![Demo](https://raw.githubusercontent.com/VinhBot/BlackCat-Package/main/Preview/update.jpg)
 # <p align="center">Guide</p>
 ```
 Commands
 ```
-+  [Language cmds](https://github.com/VinhBot/BlackCat-Club/blob/main/Example/En/Language/README.md) 📚
-+  [Economy Cmds](https://github.com/VinhBot/BlackCat-Club/blob/main/Example/En/Economy/README.md) 💴
-+  [Ranking Cmds](https://github.com/VinhBot/BlackCat-Club/blob/main/Example/En/Ranking/README.md) 🏆
-+  [Simply Cmds](https://github.com/VinhBot/BlackCat-Club/blob/main/Example/En/Commands/README.md) 🔮
-+  [Game Cmds](https://github.com/VinhBot/BlackCat-Club/blob/main/Example/En/Game/README.md) 🎮
++  [Language cmds](https://github.com/VinhBot/BlackCat-Package/blob/main/Example/En/Language/README.md) 📚
++  [Economy Cmds](https://github.com/VinhBot/BlackCat-Package/blob/main/Example/En/Economy/README.md) 💴
++  [Ranking Cmds](https://github.com/VinhBot/BlackCat-Package/blob/main/Example/En/Ranking/README.md) 🏆
++  [Simply Cmds](https://github.com/VinhBot/BlackCat-Package/blob/main/Example/En/Commands/README.md) 🔮
++  [Game Cmds](https://github.com/VinhBot/BlackCat-Package/blob/main/Example/En/Game/README.md) 🎮
 # <p align="center">Package Run</p>
 ```js
 const { BlackCat, activity, Collection, /*....*/ } = require("blackcat-club");
 const client = new BlackCat("your bot token", {
   Reply: false // Reply to the message you sent in the form 
 });
-client.setMongoURL(mongourl); // if you use ranking or economy
+setMongoURL(mongourl); // if you use ranking or economy
 // see if the bot is working or not 
 client.on("ready", () => {
     console.log(client.user.username + " is ready 😊".blue);
@@ -77,7 +73,7 @@ client.on("messageCreate", async (message) => {
 });
 ```
 # console color
-![Demo](https://raw.githubusercontent.com/VinhBot/BlackCat-Club/main/Preview/demoColors.jpg)
+![Demo](https://raw.githubusercontent.com/VinhBot/BlackCat-Package/main/Preview/demoColors.jpg)
 ```js
 console.log(`black`.black)
 console.log(`red`.red)

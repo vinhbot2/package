@@ -1,7 +1,5 @@
 'use strict';
-
 Object.defineProperty(exports, '__esModule', { value: true });
-
 const v10 = require('../../../api');
 const Assertions = require('../Assertions.cjs');
 const Component = require('../Component.cjs');

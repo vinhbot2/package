@@ -22,13 +22,9 @@ const { DjsVoice: { AudioPlayerStatus, joinVoiceChannel, createAudioResource, /*
 ```
 ```js
 // Tìm kiếm các bản cập nhật gói npm mới khi khởi động bot! Phiên bản mới nhất sẽ được hiển thị trong bảng điều khiển
-client.NewUpdate(true);
+NewUpdate(true);
 ```
 ![Demo](https://raw.githubusercontent.com/VinhBot/BlackCat-Package/main/Preview/update.jpg)
-```js
-client.ThongtinBlC();
-```
-![Demo](https://raw.githubusercontent.com/VinhBot/BlackCat-Package/main/Preview/ascii.jpg)
 # <p align="center">Hướng Dẫn</p>
 ```
 các lệnh commands
@@ -40,11 +36,11 @@ các lệnh commands
 +  [Game Cmds](https://github.com/VinhBot/BlackCat-Package/blob/main/Example/Vi/Game/README.md) 🎮
 # <p align="center">Package Run</p>
 ```js
-const { BlackCat, activity, Collection, /*....*/ } = require("blackcat-club");
+const { BlackCat, activity, setMongoURL, Collection, /*....*/ } = require("blackcat-club");
 const client = new BlackCat("token bot của bạn", {
   Reply: true // có // fasle không // tag tin nhắn thành viên gởi 
 });
-client.setMongoURL(mongourl); // nếu bạn sử dụng ranking hoặc economy
+setMongoURL(mongourl); // nếu bạn sử dụng ranking hoặc economy
 // xem bot đã hoạt động hay là chưa 
 client.on("ready", () => {
     console.log(client.user.username + " is ready 😊".blue);

@@ -29,8 +29,6 @@ const labelValueDescriptionValidator = s.string.lengthGreaterThanOrEqual(1).leng
 const jsonOptionValidator = s.object({ label: labelValueDescriptionValidator, value: labelValueDescriptionValidator, description: labelValueDescriptionValidator.optional, emoji: emojiValidator.optional, default: s.boolean.optional }).setValidationEnabled(isValidationEnabled);
 const optionsLengthValidator = s.number.int.greaterThanOrEqual(0).lessThanOrEqual(25).setValidationEnabled(isValidationEnabled);
 const urlValidator = s.string.url({ allowedProtocols: ["http:", "https:", "discord:"] }).setValidationEnabled(isValidationEnabled);
-const MessageButtonStyles = createEnum([null, 'PRIMARY', 'SECONDARY', 'SUCCESS', 'DANGER', 'LINK', 'Primary', 'Secondary', "Success", "Danger", "Link"]);
-const MessageComponentTypes = createEnum([null, 'ACTIONROW', 'BUTTON', 'Actionrow', 'Button',]);
 const defaultValidator = s.boolean;
 const validateFieldLength = (amountAdding, fields) => {fieldLengthPredicate.parse((fields?.length ?? 0) + amountAdding)};
 const validateRequiredSelectMenuParameters = (options, customId) => {customIdValidator.parse(customId); optionsValidator.parse(options)};
@@ -358,9 +356,4 @@ class ModalBuilder {
     };
   }
 }
-module.exports = {
-  EmbedBuilder, ButtonBuilder, ModalBuilder, SelectMenuBuilder,
-  MessageComponentTypes, MessageButtonStyles, ActionRowBuilder,
-  TextInputBuilder, ComponentType, resolveColor, ButtonStyle,
-  normalizeArray,  isJSONEncodable, resolvePartialEmoji
-};
+module.exports = { EmbedBuilder, ButtonBuilder, ModalBuilder, SelectMenuBuilder, ActionRowBuilder, TextInputBuilder, ComponentType, resolveColor, ButtonStyle, normalizeArray,  isJSONEncodable, resolvePartialEmoji };
