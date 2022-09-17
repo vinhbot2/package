@@ -6,7 +6,6 @@ const shapeshift = require('../../../Package/sapphire/shapeshift/index');
 const { ButtonStyle } = require('../../api');
 const SelectMenuOption = require('./SelectMenu/SelectMenuOption.cjs');
 const validation = require('../Util/validation.cjs');
-
 const customIdValidator = shapeshift.s.string.lengthGreaterThanOrEqual(1).lengthLessThanOrEqual(100).setValidationEnabled(validation.isValidationEnabled);
 const emojiValidator = shapeshift.s.object({ id: shapeshift.s.string, name: shapeshift.s.string, animated: shapeshift.s.boolean }).partial.strict.setValidationEnabled(validation.isValidationEnabled);
 const disabledValidator = shapeshift.s.boolean;
@@ -28,22 +27,20 @@ function validateRequiredSelectMenuOptionParameters(label, value) {
   labelValueDescriptionValidator.parse(label);
   labelValueDescriptionValidator.parse(value);
 }
-const urlValidator = shapeshift.s.string.url({
-  allowedProtocols: ["http:", "https:", "discord:"]
-}).setValidationEnabled(validation.isValidationEnabled);
+const urlValidator = shapeshift.s.string.url({ allowedProtocols: ["http:", "https:", "discord:"]}).setValidationEnabled(validation.isValidationEnabled);
 function validateRequiredButtonParameters(style, label, emoji, customId, url) {
   if (url && customId) {
-    throw new RangeError("URL and custom id are mutually exclusive");
+    throw new RangeError("URL và id tùy chỉnh loại trừ lẫn nhau");
   }
   if (!label && !emoji) {
-    throw new RangeError("Buttons must have a label and/or an emoji");
+    throw new RangeError("Các nút phải có nhãn hoặc biểu tượng cảm xúc");
   }
   if (style === ButtonStyle.Link) {
     if (!url) {
-      throw new RangeError("Link buttons must have a url");
+      throw new RangeError("Các nút liên kết phải có url");
     }
   } else if (url) {
-    throw new RangeError("Non-link buttons cannot have a url");
+    throw new RangeError("Các nút không liên kết không được có url");
   }
 }
 
@@ -64,4 +61,3 @@ exports.urlValidator = urlValidator;
 exports.validateRequiredButtonParameters = validateRequiredButtonParameters;
 exports.validateRequiredSelectMenuOptionParameters = validateRequiredSelectMenuOptionParameters;
 exports.validateRequiredSelectMenuParameters = validateRequiredSelectMenuParameters;
-//# sourceMappingURL=Assertions.cjs.map

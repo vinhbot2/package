@@ -45,9 +45,7 @@ exports.SlashCommandSubcommandGroupBuilder = class {
     };
   }
 };
-exports.SlashCommandSubcommandGroupBuilder = __decorateClass([
-  tsMixer.mix(NameAndDescription.SharedNameAndDescription)
-], exports.SlashCommandSubcommandGroupBuilder);
+exports.SlashCommandSubcommandGroupBuilder = __decorateClass([tsMixer.mix(NameAndDescription.SharedNameAndDescription)], exports.SlashCommandSubcommandGroupBuilder);
 exports.SlashCommandSubcommandBuilder = class {
   constructor() {
     this.name = void 0;
@@ -66,7 +64,4 @@ exports.SlashCommandSubcommandBuilder = class {
     };
   }
 };
-exports.SlashCommandSubcommandBuilder = __decorateClass([
-  tsMixer.mix(NameAndDescription.SharedNameAndDescription, SharedSlashCommandOptions.SharedSlashCommandOptions)
-], exports.SlashCommandSubcommandBuilder);
-//# sourceMappingURL=SlashCommandSubcommands.cjs.map
+exports.SlashCommandSubcommandBuilder = __decorateClass([tsMixer.mix(NameAndDescription.SharedNameAndDescription, SharedSlashCommandOptions.SharedSlashCommandOptions)], exports.SlashCommandSubcommandBuilder);

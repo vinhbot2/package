@@ -69,6 +69,4 @@ exports.SlashCommandBuilder = class {
     return this;
   }
 };
-exports.SlashCommandBuilder = __decorateClass([
-  tsMixer.mix(SharedSlashCommandOptions.SharedSlashCommandOptions, NameAndDescription.SharedNameAndDescription)
-], exports.SlashCommandBuilder);
+exports.SlashCommandBuilder = __decorateClass([tsMixer.mix(SharedSlashCommandOptions.SharedSlashCommandOptions, NameAndDescription.SharedNameAndDescription)], exports.SlashCommandBuilder);

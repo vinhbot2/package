@@ -9,4 +9,3 @@ class ComponentBuilder {
 }
 
 exports.ComponentBuilder = ComponentBuilder;
-//# sourceMappingURL=Component.cjs.map

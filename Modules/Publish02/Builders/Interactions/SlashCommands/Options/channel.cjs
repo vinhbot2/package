@@ -28,7 +28,4 @@ exports.SlashCommandChannelOption = class extends ApplicationCommandOptionBase.A
     return { ...this };
   }
 };
-exports.SlashCommandChannelOption = __decorateClass([
-  tsMixer.mix(ApplicationCommandOptionChannelTypesMixin.ApplicationCommandOptionChannelTypesMixin)
-], exports.SlashCommandChannelOption);
-//# sourceMappingURL=channel.cjs.map
+exports.SlashCommandChannelOption = __decorateClass([tsMixer.mix(ApplicationCommandOptionChannelTypesMixin.ApplicationCommandOptionChannelTypesMixin)], exports.SlashCommandChannelOption);

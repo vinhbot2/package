@@ -1,4 +1,3 @@
-'use strict';
 const { ButtonBuilder, EmbedBuilder, ActionRowBuilder, SelectMenuBuilder } = require("../../Modules/MainEvents");
 class ConnectFour {
     constructor(options) {

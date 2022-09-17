@@ -17,4 +17,3 @@ class SlashCommandBooleanOption extends ApplicationCommandOptionBase.Application
 }
 
 exports.SlashCommandBooleanOption = SlashCommandBooleanOption;
-//# sourceMappingURL=boolean.cjs.map

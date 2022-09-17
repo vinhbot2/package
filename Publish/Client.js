@@ -19,12 +19,6 @@ function kiem_tra_ket_noi(Cung_co, Dang_nhap = true, Mat_Khau) {
     });
 process.mongoURL = Mat_Khau;
 };
-/*
-colors.setTheme({
-  error: "red",
-  success: "green"  
-});
-*/
 const AddRoles = function(member, role = {}) {
   if(!member.guild) return;
   let roles = role.Roles;
@@ -66,7 +60,7 @@ const NewUpdate = function(Dinh_dang = true) {
         console.log("\x1b[33m" + `|         Mô-đun đã lỗi thời!\x1b[33m         |`);
         console.log("\x1b[35m" + "|       Phiên bản mới đã có sẵn!      |");
         console.log("\x1b[34m" + `|          ${require("../package.json").version} --> ${Du_lieu_goi["dist-tags"].latest}           |`);
-        console.log("\x1b[36m" + '|  Chạy "npm i blackcat-club@latest"  |');
+        console.log("\x1b[36m" + '|       Chạy "npm i blackcat-club"    |');
         console.log("\x1b[36m" + "|            để cập nhật!             |");
         console.log("\x1b[37m" + `|   Xem lại thay đổi trong hướng dẫn  |`);
         console.log("\x1b[32m" + "--------------------------------------\x1b[37m");
@@ -94,9 +88,9 @@ class BlackCat extends Xay_dung_vi_tri_khach_hang {
   };
   setMongoURL(Mat_Khau, Dang_nhap = true) {
     try {
-    if (!Mat_Khau.startsWith("mongodb"));
+       if (!Mat_Khau.startsWith("mongodb"));
     } catch(e) {
-      console.log("MongoURL không hợp lệ hoặc bạn chưa thêm mongourl vui lòng check lại giúp mình nhé 😜".red);
+       console.log("MongoURL không hợp lệ hoặc bạn chưa thêm mongourl vui lòng check lại giúp mình nhé 😜".red);
     };
     kiem_tra_ket_noi(Mat_Khau, Dang_nhap);
   };

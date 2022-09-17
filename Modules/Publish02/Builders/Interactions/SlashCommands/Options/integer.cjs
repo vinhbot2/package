@@ -44,7 +44,4 @@ exports.SlashCommandIntegerOption = class extends ApplicationCommandOptionBase.A
     return { ...this };
   }
 };
-exports.SlashCommandIntegerOption = __decorateClass([
-  tsMixer.mix(ApplicationCommandNumericOptionMinMaxValueMixin.ApplicationCommandNumericOptionMinMaxValueMixin, ApplicationCommandOptionWithChoicesAndAutocompleteMixin.ApplicationCommandOptionWithChoicesAndAutocompleteMixin)
-], exports.SlashCommandIntegerOption);
-//# sourceMappingURL=integer.cjs.map
+exports.SlashCommandIntegerOption = __decorateClass([tsMixer.mix(ApplicationCommandNumericOptionMinMaxValueMixin.ApplicationCommandNumericOptionMinMaxValueMixin, ApplicationCommandOptionWithChoicesAndAutocompleteMixin.ApplicationCommandOptionWithChoicesAndAutocompleteMixin)], exports.SlashCommandIntegerOption);

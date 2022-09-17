@@ -4,7 +4,6 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 const v10 = require('../../../../api');
 const ApplicationCommandOptionBase = require('../Mixins/ApplicationCommandOptionBase.cjs');
-
 class SlashCommandMentionableOption extends ApplicationCommandOptionBase.ApplicationCommandOptionBase {
   constructor() {
     super(...arguments);
@@ -17,4 +16,3 @@ class SlashCommandMentionableOption extends ApplicationCommandOptionBase.Applica
 }
 
 exports.SlashCommandMentionableOption = SlashCommandMentionableOption;
-//# sourceMappingURL=mentionable.cjs.map

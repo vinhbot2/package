@@ -23,7 +23,7 @@ function createComponentBuilder(data) {
     case v10.ComponentType.TextInput:
       return new TextInput.TextInputBuilder(data);
     default:
-      throw new Error(`Cannot properly serialize component type: ${data.type}`);
+      throw new Error(`Không thể tuần tự hóa đúng loại thành phần: ${data.type}`);
   }
 }
 
