@@ -47,17 +47,14 @@ class ShardingManager extends EventEmitter {
    */
   constructor(file, options = {}) {
     super();
-    options = mergeDefault(
-      {
+    options = mergeDefault({
         totalShards: 'auto',
         mode: 'process',
         respawn: true,
         shardArgs: [],
         execArgv: [],
         token: process.env.DISCORD_TOKEN,
-      },
-      options,
-    );
+      }, options);
 
     /**
      * Path to the shard script file
@@ -146,7 +143,6 @@ class ShardingManager extends EventEmitter {
      * @type {Collection<number, Shard>}
      */
     this.shards = new Collection();
-
     process.env.SHARDING_MANAGER = true;
     process.env.SHARDING_MANAGER_MODE = this.mode;
     process.env.DISCORD_TOKEN = this.token;
@@ -208,11 +204,7 @@ class ShardingManager extends EventEmitter {
     }
 
     if (this.shardList.some(shardId => shardId >= amount)) {
-      throw new RangeError(
-        ErrorCodes.ClientInvalidOption,
-        'Amount of shards',
-        'bigger than the highest shardId in the shardList option.',
-      );
+      throw new RangeError(ErrorCodes.ClientInvalidOption, 'Số lượng shards', 'lớn hơn shardId cao nhất trong tùy chọn shardList.');
     }
 
     // Spawn the shards

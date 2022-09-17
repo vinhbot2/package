@@ -1,7 +1,7 @@
 module.exports = (client) => {
-  const { Commands: { Economy }} = require("../../Publish/Client");
+  const { Commands: { Economy }, setMongoURL } = require("../../Publish/Client");
   client.cs = new Economy;
-  const { vietnam, setMongoURL, setMaxWalletAmount, setDefaultBankAmount, setMaxBankAmount, setDefaultWalletAmount } = client.cs;
+  const { vietnam, setMaxWalletAmount, setDefaultBankAmount, setMaxBankAmount, setDefaultWalletAmount } = client.cs;
     client.donvitiente = vietnam;
     setMaxWalletAmount(1000);
     setDefaultBankAmount(1000);
@@ -11,6 +11,7 @@ module.exports = (client) => {
     # Events mongoose xem kết nối có thành công hay là không
     --------------------*/
     const mongoose = require("mongoose");
+    client .setMongoURL(process.env.mongourl)
     mongoose.connection.on("connected", () => {
           console.log("Mongoose đã kết nối thành công!".red);
     });

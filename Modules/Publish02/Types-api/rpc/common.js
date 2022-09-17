@@ -29,4 +29,3 @@ var RPCCloseEventCodes;
     RPCCloseEventCodes[RPCCloseEventCodes["InvalidVersion"] = 4004] = "InvalidVersion";
     RPCCloseEventCodes[RPCCloseEventCodes["InvalidEncoding"] = 4005] = "InvalidEncoding";
 })(RPCCloseEventCodes = exports.RPCCloseEventCodes || (exports.RPCCloseEventCodes = {}));
-//# sourceMappingURL=common.js.map

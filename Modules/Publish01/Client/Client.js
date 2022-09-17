@@ -196,13 +196,10 @@ class Client extends BaseClient {
     this.token = token = token.replace(/^(Bot|Bearer)\s*/i, '');
     this.rest.setToken(token);
     this.emit(Events.Debug,`Provided token: ${token.split('.').map((val, i) => (i > 1 ? val.replace(/./g, '*') : val)).join('.')}`);
-
     if (this.options.presence) {
       this.options.ws.presence = this.presence._parse(this.options.presence);
     }
-
-    this.emit(Events.Debug, 'Preparing to connect to the gateway...');
-
+    this.emit(Events.Debug, 'Chuẩn bị kết nối với cổng...');
     try {
       await this.ws.connect();
       return this.token;
@@ -247,7 +244,7 @@ class Client extends BaseClient {
    * @returns {Promise<Invite>}
    * @example
    * client.fetchInvite('https://discord.gg/djs')
-   *   .then(invite => console.log(`Obtained invite with code: ${invite.code}`))
+   *   .then(invite => console.log(`Đã nhận được lời mời với mã: ${invite.code}`))
    *   .catch(console.error);
    */
   async fetchInvite(invite, options) {
@@ -296,7 +293,7 @@ class Client extends BaseClient {
    * @returns {Promise<Collection<string, VoiceRegion>>}
    * @example
    * client.fetchVoiceRegions()
-   *   .then(regions => console.log(`Available regions are: ${regions.map(region => region.name).join(', ')}`))
+   *   .then(regions => console.log(`Các khu vực có sẵn là: ${regions.map(region => region.name).join(', ')}`))
    *   .catch(console.error);
    */
   async fetchVoiceRegions() {
@@ -312,7 +309,7 @@ class Client extends BaseClient {
    * @returns {Promise<Sticker>}
    * @example
    * client.fetchSticker('id')
-   *   .then(sticker => console.log(`Obtained sticker with name: ${sticker.name}`))
+   *   .then(sticker => console.log(`Đã nhận được hình dán có tên: ${sticker.name}`))
    *   .catch(console.error);
    */
   async fetchSticker(id) {
@@ -325,7 +322,7 @@ class Client extends BaseClient {
    * @returns {Promise<Collection<Snowflake, StickerPack>>}
    * @example
    * client.fetchPremiumStickerPacks()
-   *   .then(packs => console.log(`Available sticker packs are: ${packs.map(pack => pack.name).join(', ')}`))
+   *   .then(packs => console.log(`Các gói hình dán có sẵn là: ${packs.map(pack => pack.name).join(', ')}`))
    *   .catch(console.error);
    */
   async fetchPremiumStickerPacks() {
@@ -384,7 +381,7 @@ class Client extends BaseClient {
    *   ],
    *   scopes: [OAuth2Scopes.Bot],
    * });
-   * console.log(`Generated bot invite link: ${link}`);
+   * console.log(`Liên kết mời bot đã tạo: ${link}`);
    */
   generateInvite(options = {}) {
     if (typeof options !== 'object') throw new TypeError(ErrorCodes.InvalidType, 'options', 'object', true);

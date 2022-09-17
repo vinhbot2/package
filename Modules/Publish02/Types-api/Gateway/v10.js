@@ -240,4 +240,3 @@ var GatewayDispatchEvents;
     GatewayDispatchEvents["GuildScheduledEventUserRemove"] = "GUILD_SCHEDULED_EVENT_USER_REMOVE";
 })(GatewayDispatchEvents = exports.GatewayDispatchEvents || (exports.GatewayDispatchEvents = {}));
 // #endregion Shared
-//# sourceMappingURL=v10.js.map

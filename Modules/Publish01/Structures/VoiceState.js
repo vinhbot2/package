@@ -1,8 +1,8 @@
 'use strict';
 
 const { ChannelType, Routes } = require('../../Package/sapphire/snowflake/index');
-const Base = require('./Base');
 const { Error, TypeError, ErrorCodes } = require('../Errors');
+const Base = require('./Base');
 
 /**
  * Represents the voice state for a Guild Member.
@@ -239,11 +239,7 @@ class VoiceState extends Base {
     await this.client.rest.patch(Routes.guildVoiceState(this.guild.id, target), {
       body: {
         channel_id: this.channelId,
-        request_to_speak_timestamp: data.requestToSpeak
-          ? new Date().toISOString()
-          : data.requestToSpeak === false
-          ? null
-          : undefined,
+        request_to_speak_timestamp: data.requestToSpeak ? new Date().toISOString() : data.requestToSpeak === false ? null : undefined,
         suppress: data.suppressed,
       },
     });

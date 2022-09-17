@@ -13,16 +13,6 @@ client.on("messageCreate", async(message) => {
   messageAPI(client, message, { prefix: "!" });
 });
 
-client.on("guildMemberAdd", async(member) => {
-      AddRoles(member, {
-          Roles: [
-               "844061254380421130",
-               "853668078516830238", 
-               "870660231519170580",
-               "850210486208430090"
-          ],
-      });
-});
 ["setups"].forEach(Blackcat => {
      require(`./Handlers/${Blackcat}`)(client);
 });

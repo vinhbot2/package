@@ -1,8 +1,8 @@
 'use strict';
 
+const CommandInteractionOptionResolver = require('./CommandInteractionOptionResolver');
 const { InteractionResponseType, Routes } = require('../../Publish02/api');
 const BaseInteraction = require('./BaseInteraction');
-const CommandInteractionOptionResolver = require('./CommandInteractionOptionResolver');
 const { ErrorCodes } = require('../Errors');
 
 /**

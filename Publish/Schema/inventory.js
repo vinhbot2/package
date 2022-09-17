@@ -1,4 +1,3 @@
-'use strict';
 const mongoose = require("mongoose");
 module.exports = mongoose.model('Inventory-currency', new mongoose.Schema({
       guildID: { type: String, default: null },

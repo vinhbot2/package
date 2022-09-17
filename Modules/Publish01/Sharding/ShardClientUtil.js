@@ -107,7 +107,6 @@ class ShardClientUtil {
   fetchClientValues(prop, shard) {
     return new Promise((resolve, reject) => {
       const parent = this.parentPort ?? process;
-
       const listener = message => {
         if (message?._sFetchProp !== prop || message._sFetchPropShard !== shard) return;
         parent.removeListener('message', listener);
@@ -117,7 +116,6 @@ class ShardClientUtil {
       };
       this.incrementMaxListeners(parent);
       parent.on('message', listener);
-
       this.send({ _sFetchProp: prop, _sFetchPropShard: shard }).catch(err => {
         parent.removeListener('message', listener);
         this.decrementMaxListeners(parent);
@@ -206,7 +204,7 @@ class ShardClientUtil {
    */
   _respond(type, message) {
     this.send(message).catch(err => {
-      const error = new globalThis.Error(`Error when sending ${type} response to master process: ${err.message}`);
+      const error = new globalThis.Error(`Lỗi khi gửi phản hồi ${type} tới quy trình chính: ${err.message}`);
       error.stack = err.stack;
       /**
        * Emitted when the client encounters an error.
@@ -230,10 +228,7 @@ class ShardClientUtil {
     if (!this._singleton) {
       this._singleton = new this(client, mode);
     } else {
-      client.emit(
-        Events.Warn,
-        'Multiple clients created in child process/worker; only the first will handle sharding helpers.',
-      );
+      client.emit(Events.Warn, 'Nhiều client được tạo trong quy trình con/công nhân; chỉ người đầu tiên sẽ xử lý những người trợ giúp sharding.',);
     }
     return this._singleton;
   }

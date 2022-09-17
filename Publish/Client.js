@@ -2,10 +2,23 @@
 # Author: Nguyễn Văn Vinh
 --------------------------------------*/
 'use strict';
-const { Client: Xay_dung_vi_tri_khach_hang, Partials } = require(`${process.cwd()}/Modules/MainEvents`);
-const { GatewayIntentBits } = require(`${process.cwd()}/Modules/Publish02/api`);
+const { Client: Xay_dung_vi_tri_khach_hang, Partials } = require(`../Modules/MainEvents`);
+const { GatewayIntentBits } = require(`../Modules/Publish02/api`);
 const Du_lieu = require("mongoose");
 const colors = require("colors");
+function kiem_tra_ket_noi(Cung_co, Dang_nhap = true, Mat_Khau) {
+    let Ket_noi = true;
+    Du_lieu.connect(Cung_co, {
+       useNewUrlParser: true,
+       useUnifiedTopology: true,
+    }).catch((e) => {
+       Ket_noi = false;
+       console.log(e);
+    }).then(() => {
+       if (Ket_noi && Dang_nhap);
+    });
+process.mongoURL = Mat_Khau;
+};
 /*
 colors.setTheme({
   error: "red",
@@ -32,22 +45,12 @@ const AddRoles = function(member, role = {}) {
   --------------------------*/
 };
 const setMongoURL = function(Mat_Khau, Dang_nhap = true) {
-    if (!Mat_Khau.startsWith("mongodb"))
-       console.log("MongoURL không hợp lệ");
+    try {
+    if (!Mat_Khau.startsWith("mongodb"));
+    } catch(e) {
+      console.log("MongoURL không hợp lệ hoặc bạn chưa thêm mongourl vui lòng check lại giúp mình nhé 😜".red);
+    };
     kiem_tra_ket_noi(Mat_Khau, Dang_nhap);
-    function kiem_tra_ket_noi(Cung_co, Dang_nhap = true) {
-        let Ket_noi = true;
-        Du_lieu.connect(Cung_co, {
-           useNewUrlParser: true,
-           useUnifiedTopology: true,
-        }).catch((e) => {
-          Ket_noi = false;
-          throw new TypeError(`error: ${e}`);
-        }).then(() => {
-          if (Ket_noi && Dang_nhap);
-        });
-    process.mongoURL = Mat_Khau;
-   };
 };
 
 const NewUpdate = function(Dinh_dang = true) {
@@ -89,6 +92,14 @@ class BlackCat extends Xay_dung_vi_tri_khach_hang {
     });
     this.login(token);
   };
+  setMongoURL(Mat_Khau, Dang_nhap = true) {
+    try {
+    if (!Mat_Khau.startsWith("mongodb"));
+    } catch(e) {
+      console.log("MongoURL không hợp lệ hoặc bạn chưa thêm mongourl vui lòng check lại giúp mình nhé 😜".red);
+    };
+    kiem_tra_ket_noi(Mat_Khau, Dang_nhap);
+  };
 };
 
 module.exports.BlackCat = BlackCat;
@@ -108,8 +119,7 @@ module.exports.Game = {
 // Function Commands
 module.exports.Commands = {
     EmbedPages: require("./Commands/EmbedPages"),
-    Economy: require("./Commands/Economy"),
-    ranking: require("./Commands/Ranking"),
+    Economy: require("./Commands/Economy")
 };
 // asscii-table
 module.exports.ascii = require("./Functions/functionsAsciilog");

@@ -1,6 +1,6 @@
 "use strict";
-// This file exports all the types available in the recommended gateway version
-// Thereby, things MAY break in the future. Try sticking to imports from a specific version
+// Tệp này xuất tất cả các loại có sẵn trong phiên bản cổng được đề xuất
+// Qua đó, những điều CÓ THỂ phá vỡ trong tương lai. Hãy thử tiếp tục nhập từ một phiên bản cụ thể
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -17,4 +17,3 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./v10"), exports);
-//# sourceMappingURL=index.js.map

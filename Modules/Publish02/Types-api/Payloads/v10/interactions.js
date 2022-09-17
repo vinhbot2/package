@@ -21,4 +21,3 @@ __exportStar(require("./_interactions/messageComponents"), exports);
 __exportStar(require("./_interactions/modalSubmit"), exports);
 __exportStar(require("./_interactions/ping"), exports);
 __exportStar(require("./_interactions/responses"), exports);
-//# sourceMappingURL=interactions.js.map

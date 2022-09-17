@@ -235,10 +235,7 @@ class Invite extends Base {
     const guild = this.guild;
     if (!guild || !this.client.guilds.cache.has(guild.id)) return false;
     if (!guild.members.me) throw new Error(ErrorCodes.GuildUncachedMe);
-    return Boolean(
-      this.channel?.permissionsFor(this.client.user).has(PermissionFlagsBits.ManageChannels, false) ||
-        guild.members.me.permissions.has(PermissionFlagsBits.ManageGuild),
-    );
+    return Boolean(this.channel?.permissionsFor(this.client.user).has(PermissionFlagsBits.ManageChannels, false) || guild.members.me.permissions.has(PermissionFlagsBits.ManageGuild));
   }
 
   /**
@@ -247,10 +244,7 @@ class Invite extends Base {
    * @readonly
    */
   get expiresTimestamp() {
-    return (
-      this._expiresTimestamp ??
-      (this.createdTimestamp && this.maxAge ? this.createdTimestamp + this.maxAge * 1_000 : null)
-    );
+    return (this._expiresTimestamp ?? (this.createdTimestamp && this.maxAge ? this.createdTimestamp + this.maxAge * 1_000 : null));
   }
 
   /**
