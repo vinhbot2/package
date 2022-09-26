@@ -185,8 +185,13 @@ class Integration extends Base {
     } else {
       this.application ??= null;
     }
+    if ('scopes' in data) {
+      this.scopes = data.scopes;
+    } else {
+      this.scopes ??= [];
+    }
   }
-
+  
   /**
    * Deletes this integration.
    * @returns {Promise<Integration>}

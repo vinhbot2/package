@@ -118,6 +118,8 @@ const Messages = {
   [DjsErrorCodes.InvalidMissingScopes]: 'At least one valid scope must be provided for the invite',
   [DjsErrorCodes.NotImplemented]: (what, name) => `Method ${what} not implemented on ${name}.`,
   [DjsErrorCodes.SweepFilterReturn]: 'Giá trị trả về của hàm Bộ lọc quét không sai hoặc một Hàm',
+
+  [DjsErrorCodes.GuildForumMessageRequired]: 'Bạn phải cung cấp một tin nhắn để tạo một chuỗi diễn đàn guild',
 };
 
 module.exports = Messages;

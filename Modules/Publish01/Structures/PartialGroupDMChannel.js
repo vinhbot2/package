@@ -11,6 +11,7 @@ class PartialGroupDMChannel extends BaseChannel {
   constructor(client, data) {
     super(client, data);
 
+     this.flags = null;
     /**
      * The name of this Group DM Channel
      * @type {?string}

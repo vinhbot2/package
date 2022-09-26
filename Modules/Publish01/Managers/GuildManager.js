@@ -148,8 +148,7 @@ class GuildManager extends CachedManager {
    * @property {SystemChannelFlagsResolvable} [systemChannelFlags] The flags of the system channel
    * @property {GuildVerificationLevel} [verificationLevel] The verification level for the guild
    */
-  /* eslint-enable max-len */
-
+  
   /**
    * Creates a guild.
    * <warn>This is only available to bots in fewer than 10 guilds.</warn>

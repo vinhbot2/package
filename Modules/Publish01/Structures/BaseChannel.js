@@ -4,6 +4,7 @@ const { channelLink } = require('../../Publish02/index');
 const { DiscordSnowflake } = require('../../Package/sapphire/snowflake/index');
 const { ChannelType, Routes } = require('../../Publish02/api');
 const Base = require('./Base');
+const ChannelFlagsBitField = require('../Util/ChannelFlagsBitField');
 const { ThreadChannelTypes } = require('../Util/Constants');
 
 /**
@@ -25,6 +26,16 @@ class BaseChannel extends Base {
   }
 
   _patch(data) {
+        if ('flags' in data) {
+       /**
+       * The flags that are applied to the channel.
+       * <info>This is only `null` in a {@link PartialGroupDMChannel}. In all other cases, it is not `null`.</info>
+       * @type {?Readonly<ChannelFlagsBitField>}
+       */
+          this.flags = new ChannelFlagsBitField(data.flags).freeze();
+        } else {
+          this.flags ??= new ChannelFlagsBitField().freeze();
+        }
     /**
      * The channel's id
      * @type {Snowflake}

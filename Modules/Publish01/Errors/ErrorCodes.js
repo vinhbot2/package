@@ -285,5 +285,7 @@ const keys = [
   'NotImplemented',
 
   'SweepFilterReturn',
+
+  'GuildForumMessageRequired',
 ];
 module.exports = Object.fromEntries(keys.map(key => [key, key]));

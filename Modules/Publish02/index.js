@@ -1,3 +1,4 @@
+// builder
 'use strict';
 Object.defineProperty(exports, '__esModule', { value: true });
 const Assertions = require('./Builders/Messages/Embed/Assertions.cjs');
@@ -124,27 +125,25 @@ exports.isValidationEnabled = validation.isValidationEnabled;
 // Collection 
 const collection = require('./Collection/collection.cjs');
 exports.Collection = collection.Collection;
-// Rest
-const CDN = require('./Rest/lib/CDN.cjs');
-const DiscordAPIError = require('./Rest/lib/Errors/DiscordAPIError.cjs');
-const HTTPError = require('./Rest/lib/Errors/HTTPError.cjs');
-const RateLimitError = require('./Rest/lib/Errors/RateLimitError.cjs');
-const RequestManager = require('./Rest/lib/RequestManager.cjs');
-const REST = require('./Rest/lib/REST.cjs');
-const constants = require('./Rest/lib/Utils/constants.cjs');
-const utils = require('./Rest/lib/Utils/utils.cjs');
-exports.CDN = CDN.CDN;
-exports.DiscordAPIError = DiscordAPIError.DiscordAPIError;
-exports.HTTPError = HTTPError.HTTPError;
-exports.RateLimitError = RateLimitError.RateLimitError;
-exports.RequestManager = RequestManager.RequestManager;
-exports.RequestMethod = RequestManager.RequestMethod;
-exports.REST = REST.REST;
-exports.ALLOWED_EXTENSIONS = constants.ALLOWED_EXTENSIONS;
-exports.ALLOWED_SIZES = constants.ALLOWED_SIZES;
-exports.ALLOWED_STICKER_EXTENSIONS = constants.ALLOWED_STICKER_EXTENSIONS;
-exports.DefaultRestOptions = constants.DefaultRestOptions;
-exports.DefaultUserAgent = constants.DefaultUserAgent;
-exports.RESTEvents = constants.RESTEvents;
-exports.makeURLSearchParams = utils.makeURLSearchParams;
-exports.parseResponse = utils.parseResponse;
+// Module tổ hợp 
+var Tạo_Ràng_Buộc = (this && this.Tạo_Ràng_Buộc) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var Mô_Tả = Object.getOwnPropertyDescriptor(m, k);
+    if (!Mô_Tả || ("get" in Mô_Tả ? !m.__esModule : Mô_Tả.writable || Mô_Tả.configurable)) {
+      Mô_Tả = { 
+        enumerable: true, 
+        get: function() { 
+          return m[k];
+        },
+      };
+    };
+    Object.defineProperty(o, k2, Mô_Tả);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var Chạy_các_modules = (this && this.Chạy_các_modules) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) Tạo_Ràng_Buộc(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+Chạy_các_modules(require("./Rest/index.js"), exports);
